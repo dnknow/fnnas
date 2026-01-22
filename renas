@@ -830,6 +830,7 @@ refactor_rootfs() {
     # Delete related files
     rm -f var/lib/dpkg/info/linux-image*
     rm -rf usr/share/doc/linux-image-*
+    rm -f usr/trim/bin/resize-rootfs.sh
 
     # Rebuild symbolic link files (ln -sf ${target} ${symbolic_link_file})
     ln -sf usr/bin bin
@@ -839,6 +840,7 @@ refactor_rootfs() {
     ln -sf /run var/run
     ln -sf /usr/share/zoneinfo/Asia/Shanghai etc/localtime
     ln -sf fnnas-ddbr usr/sbin/ddbr
+    ln -sf /usr/sbin/fnnas-tf usr/trim/bin/resize-rootfs.sh
 
     # Fix common releases permissions
     [[ -d "var/tmp" ]] && chmod 777 var/tmp

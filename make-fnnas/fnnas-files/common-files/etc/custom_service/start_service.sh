@@ -146,12 +146,5 @@ if [[ -x "/usr/bin/oes_sata_leds.sh" ]]; then
     log_message "SATA status check service (oes_sata_leds.sh) started in background."
 fi
 
-# Maximize root partition size
-todo_rootfs_resize="/root/.no_rootfs_resize"
-[[ -f "${todo_rootfs_resize}" && "$(cat ${todo_rootfs_resize} 2>/dev/null | xargs)" == "yes" ]] && {
-    fnnas-tf >/dev/null 2>&1 &
-    log_message "Root partition resized successfully."
-}
-
 # Finalization
 log_message "All custom services have been processed."
